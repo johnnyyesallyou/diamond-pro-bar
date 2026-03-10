@@ -1,0 +1,64 @@
+# dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# production
+dist/
+.output/
+.next/
+.nuxt/
+build/
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# IDE
+.fleet
+.idea/
+*.suo
+*.iml
+*.iws
+*.ipr
+
+# Astro
+.astro/
+.cache/
+
+# Testing
+.coverage/
+coverage/
+
+# Local Netlify folder
+.netlify/
+
+# Local Vercel folder
+.vercel/
+
+# Sveltia CMS
+public/images/uploads/
