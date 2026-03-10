@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+  {
+    title: 'Коктейльный бар',
+    description: 'Профессиональные коктейли от опытных барменов',
+    price: 'от 3500₽',
+    minOrder: 'Минимум 5 человек',
+    image: 'https://images.unsplash.com/photo-1608439773649-abc10fbb03e0?w=500&h=500&fit=crop',
+    features: ['Авторские коктейли', 'Premium алкоголь', 'Профессиональные барменты']
+  },
+  {
+    title: 'Кофейня на выезде',
+    description: 'Качественный кофе и горячие напитки',
+    price: 'от 2500₽',
+    minOrder: 'Минимум 3 человека',
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&h=500&fit=crop',
+    features: ['Espresso машина', 'Качественные зерна', 'Быстрое обслуживание']
+  },
+  {
+    title: 'Смузи-бар',
+    description: 'Свежие и полезные напитки на любой вкус',
+    price: 'от 1500₽',
+    minOrder: 'Минимум 2 человека',
+    image: 'https://images.unsplash.com/photo-1590080876351-cd381e72e601?w=500&h=500&fit=crop',
+    features: ['Натуральные ингредиенты', 'Диетические опции', 'Быстрое приготовление']
+  },
+  {
+    title: 'VIP пакет',
+    description: 'Полный спектр услуг для премиального события',
+    price: 'от 7500₽',
+    minOrder: 'Минимум 10 человек',
+    image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop',
+    features: ['Все напитки включены', 'Дизайн интерьера', 'Дополнительное оборудование']
+  }
+];
+---
+
+<Layout title="Diamond Pro Bar - Выездной бар в Москве" currentPage="home">
+  <Hero
+    title="Diamond Pro Bar"
+    subtitle="Выездной бар под ключ для вашего события в Москве и МО"
+    image="https://images.unsplash.com/photo-1537521537707-da8fbf3b3efb?w=1200&h=600&fit=crop"
+  />
+
+  {/* Services Section */}
+  <section id="services" class="py-16 sm:py-24 bg-gradient-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 sm:mb-16 animate-fade-in">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-4 sm:mb-6">
+          Наши услуги
+        </h2>
+        <div class="flex justify-center gap-2 mb-4">
+          <div class="w-2 h-2 rounded-full bg-gold"></div>
+          <div class="w-2 h-2 rounded-full bg-gold"></div>
+          <div class="w-2 h-2 rounded-full bg-gold"></div>
+        </div>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+          Выберите пакет услуг, который идеально подойдет для вашего события
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {services.map((service) => (
+          <div class="animate-fade-in-up" style={{ animationDelay: `${services.indexOf(service) * 100}ms` }}>
+            <ServiceCard {...service} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* How It Works */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-12 sm:mb-16 text-center">
+        Как это работает
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        {[
+          {
+            num: '1',
+            title: 'Заявка',
+            desc: 'Заполните форму или позвоните нам'
+          },
+          {
+            num: '2',
+            title: 'Расчет',
+            desc: 'Рассчитаем смету под ваши параметры'
+          },
+          {
+            num: '3',
+            title: 'Договор',
+            desc: 'Заключим контракт и подтвердим дату'
+          },
+          {
+            num: '4',
+            title: 'Событие',
+            desc: 'Приедем и создадим идеальную атмосферу'
+          }
+        ].map((step) => (
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-gold text-dark-bg font-serif font-bold text-2xl sm:text-3xl mb-4 mx-auto">
+              {step.num}
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">{step.title}</h3>
+            <p class="text-gray-400 text-sm">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* CTA Section */}
+  <section class="py-16 sm:py-24 bg-gradient-gold text-dark-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-4 sm:mb-6">
+        Готовы устроить незабываемое событие?
+      </h2>
+      <p class="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
+        Свяжитесь с нами и получите персональное предложение под ваше мероприятие
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://wa.me/79588261058"
+          target="_blank"
+          class="px-8 py-4 bg-dark-bg text-gold font-bold rounded hover:shadow-lg transition-all transform hover:scale-105"
+        >
+          Написать в WhatsApp
+        </a>
+        <a
+          href="/contact/"
+          class="px-8 py-4 border-2 border-dark-bg text-dark-bg font-bold rounded hover:bg-dark-bg/20 transition-all"
+        >
+          Заполнить форму
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import MenuCard from '../components/MenuCard.astro';
+
+const cocktails = [
+  {
+    name: 'Martini Dry',
+    ingredients: 'Gin, Vermouth, Olive',
+    price: '450₽',
+    description: 'Классический коктейль с гарниром из маслины',
+    image: 'https://images.unsplash.com/photo-1536038482416-3f7ee3a2ad99?w=400&h=400&fit=crop'
+  },
+  {
+    name: 'Margarita',
+    ingredients: 'Tequila, Triple Sec, Lime Juice',
+    price: '520₽',
+    description: 'Свежий коктейль с солью на краю бокала',
+    image: 'https://images.unsplash.com/photo-1608270861620-7d5efd10d313?w=400&h=400&fit=crop'
+  },
+  {
+    name: 'Mojito',
+    ingredients: 'Rum, Mint, Lime, Soda',
+    price: '480₽',
+    description: 'Легкий и рефрешивающий летний напиток',
+    image: 'https://images.unsplash.com/photo-1609318384864-a93a3ff61d7e?w=400&h=400&fit=crop'
+  },
+  {
+    name: 'Manhattan',
+    ingredients: 'Whiskey, Vermouth, Bitters',
+    price: '550₽',
+    description: 'Классический американский коктейль',
+    image: 'https://images.unsplash.com/photo-1608380066682-8cd1e91a14d4?w=400&h=400&fit=crop'
+  },
+  {
+    name: 'Cosmopolitan',
+    ingredients: 'Vodka, Triple Sec, Cranberry',
+    price: '500₽',
+    description: 'Элегантный коктейль для особых случаев',
+    image: 'https://images.unsplash.com/photo-1542326202-d21dc79b2d6e?w=400&h=400&fit=crop'
+  },
+  {
+    name: 'Old Fashioned',
+    ingredients: 'Bourbon, Bitters, Sugar, Orange',
+    price: '580₽',
+    description: 'Эксклюзивный коктейль из курьера',
+    image: 'https://images.unsplash.com/photo-1582158471865-45f2075e33e2?w=400&h=400&fit=crop'
+  }
+];
+
+const nonAlcoholic = [
+  {
+    name: 'Virgin Mojito',
+    ingredients: 'Mint, Lime, Soda, Sugar',
+    price: '300₽',
+    description: 'Классический мохито без алкоголя',
+    image: 'https://images.unsplash.com/photo-1590080876351-cd381e72e601?w=400&h=400&fit=crop'
+  },
+  {
+    name: 'Fresh Lemonade',
+    ingredients: 'Lemon, Ginger, Honey, Water',
+    price: '280₽',
+    description: 'Свежевыжатый лимонад с имбирем',
+    image: 'https://images.unsplash.com/photo-1600788148184-289e4e87fac9?w=400&h=400&fit=crop'
+  }
+];
+
+const coffee = [
+  {
+    name: 'Espresso',
+    ingredients: 'Arabica Coffee',
+    price: '180₽',
+    description: 'Чистый эспрессо из лучших зерен',
+    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop'
+  },
+  {
+    name: 'Cappuccino',
+    ingredients: 'Espresso, Milk, Foam',
+    price: '240₽',
+    description: 'Классический капучино с молочной пеной',
+    image: 'https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=400&h=400&fit=crop'
+  },
+  {
+    name: 'Latte',
+    ingredients: 'Espresso, Steamed Milk',
+    price: '220₽',
+    description: 'Мягкое и кремовое кофейное удовольствие',
+    image: 'https://images.unsplash.com/photo-1524432888867-9ca67f2e2133?w=400&h=400&fit=crop'
+  }
+];
+---
+
+<Layout title="Меню - Diamond Pro Bar" currentPage="menu">
+  <Hero
+    title="Наше меню"
+    subtitle="Широкий выбор коктейлей, кофе и безалкогольных напитков"
+    image="https://images.unsplash.com/photo-1608270861620-7d5efd10d313?w=1200&h=600&fit=crop"
+    cta={false}
+  />
+
+  {/* Cocktails */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-2">
+          🍹 Коктейли
+        </h2>
+        <p class="text-gray-400">Авторские и классические коктейли от профессиональных барменов</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {cocktails.map((cocktail) => (
+          <MenuCard {...cocktail} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Non-Alcoholic */}
+  <section class="py-16 sm:py-24 bg-gradient-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-2">
+          🍋 Безалкогольные напитки
+        </h2>
+        <p class="text-gray-400">Свежие и вкусные напитки для всех</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {nonAlcoholic.map((drink) => (
+          <MenuCard {...drink} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Coffee */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-2">
+          ☕ Кофе
+        </h2>
+        <p class="text-gray-400">Качественный кофе из свежеобжаренных зерен</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {coffee.map((item) => (
+          <MenuCard {...item} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="py-16 sm:py-24 bg-gradient-gold text-dark-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold mb-4 sm:mb-6">
+        Хотите заказать выездной бар?
+      </h2>
+      <p class="text-lg mb-8 opacity-90">
+        Свяжитесь с нами и получите персональное меню
+      </p>
+      <a
+        href="https://wa.me/79588261058"
+        target="_blank"
+        class="inline-block px-8 py-4 bg-dark-bg text-gold font-bold rounded hover:shadow-lg transition-all"
+      >
+        Написать в WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

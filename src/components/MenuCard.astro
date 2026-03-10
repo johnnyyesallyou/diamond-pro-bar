@@ -1,0 +1,49 @@
+---
+interface Props {
+  name: string;
+  ingredients: string;
+  price: string;
+  image?: string;
+  description?: string;
+}
+
+const { name, ingredients, price, image = 'https://images.unsplash.com/photo-1536038482416-3f7ee3a2ad99?w=400&h=400&fit=crop', description = '' } = Astro.props;
+---
+
+<div class="group bg-dark-card border border-dark-border rounded-lg overflow-hidden hover:border-gold transition-colors">
+  <div class="relative h-48 sm:h-56 overflow-hidden">
+    <img
+      src={image}
+      alt={name}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
+  </div>
+
+  <div class="p-4 sm:p-6">
+    <h3 class="text-lg sm:text-xl font-serif font-bold text-white mb-2">{name}</h3>
+
+    {description && (
+      <p class="text-gray-400 text-sm mb-3">{description}</p>
+    )}
+
+    <p class="text-gray-500 text-xs sm:text-sm mb-4">{ingredients}</p>
+
+    <div class="flex justify-between items-center pt-4 border-t border-dark-border">
+      <span class="text-gold font-serif text-xl sm:text-2xl font-bold">{price}</span>
+      <button
+        class="px-4 py-2 bg-gold/10 border border-gold text-gold text-sm font-bold rounded hover:bg-gold/20 transition-colors"
+        data-cocktail={name}
+      >
+        Заказать
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const button = document.querySelector(`[data-cocktail="${name}"]`);
+  button?.addEventListener('click', () => {
+    const message = `Хочу заказать: ${name}`;
+    window.open(`https://wa.me/79999999999?text=${encodeURIComponent(message)}`, '_blank');
+  });
+</script>

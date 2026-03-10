@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  image?: string;
+  cta?: boolean;
+}
+
+const { title, subtitle, image = 'https://images.unsplash.com/photo-1537521537707-da8fbf3b3efb?w=1200&h=600&fit=crop', cta = true } = Astro.props;
+---
+
+<section
+  class="relative h-screen min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20"
+  style={{
+    backgroundImage: `url('${image}')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}
+>
+  {/* Overlay */}
+  <div class="absolute inset-0 bg-gradient-to-r from-dark-bg/95 via-dark-bg/80 to-transparent"></div>
+
+  {/* Content */}
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+    <div class="animate-fade-in-up">
+      <div class="mb-4 sm:mb-6">
+        <div class="inline-block text-gold text-4xl sm:text-5xl font-serif mb-2">◆</div>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight">
+        {title}
+      </h1>
+
+      {subtitle && (
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-2xl">
+          {subtitle}
+        </p>
+      )}
+
+      {cta && (
+        <div class="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
+          <a
+            href="#services"
+            class="px-8 py-4 bg-gradient-gold text-dark-bg font-bold rounded hover:shadow-lg hover:shadow-gold/50 transition-all transform hover:scale-105"
+          >
+            Узнать больше
+          </a>
+          <a
+            href="https://wa.me/79999999999"
+            target="_blank"
+            class="px-8 py-4 border-2 border-gold text-gold font-bold rounded hover:bg-gold/10 transition-all"
+          >
+            Рассчитать смету
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+
+  {/* Scroll Indicator */}
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+    <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>

@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+
+const posts = [
+  {
+    id: 1,
+    title: 'Топ-10 коктейлей для корпоратива',
+    excerpt: 'Узнайте какие коктейли лучше всего подойдут для деловой вечеринки',
+    content: 'На деловом мероприятии важно создать правильную атмосферу. Коктейли должны быть элегантными, но не слишком сложными в приготовлении...',
+    image: 'https://images.unsplash.com/photo-1608439773649-abc10fbb03e0?w=600&h=400&fit=crop',
+    date: '15 Марта 2024',
+    author: 'Алексей Смирнов',
+    category: 'Коктейли',
+    slug: 'top-10-cocktails'
+  },
+  {
+    id: 2,
+    title: 'Как выбрать выездной бар для свадьбы',
+    excerpt: 'Полное руководство по выбору идеального бара для вашего торжества',
+    content: 'Свадьба - один из самых важных дней в жизни. Каждая деталь должна быть идеальной, включая выбор выездного бара...',
+    image: 'https://images.unsplash.com/photo-1519671482677-2b2f0ce8e24d?w=600&h=400&fit=crop',
+    date: '10 Марта 2024',
+    author: 'Елена Волкова',
+    category: 'Советы',
+    slug: 'wedding-bar-guide'
+  },
+  {
+    id: 3,
+    title: 'История коктейля Manhattan',
+    excerpt: 'Интересные факты об одном из самых известных коктейлей в мире',
+    content: 'Manhattan - один из самых известных коктейлей, созданный в конце XIX века в Нью-Йорке...',
+    image: 'https://images.unsplash.com/photo-1608380066682-8cd1e91a14d4?w=600&h=400&fit=crop',
+    date: '5 Марта 2024',
+    author: 'Иван Петров',
+    category: 'История',
+    slug: 'manhattan-story'
+  },
+  {
+    id: 4,
+    title: 'Тренды в барной индустрии 2024',
+    excerpt: 'Что нового в мире коктейльной культуры в этом году',
+    content: 'Мир коктейльной культуры постоянно развивается. В 2024 году мы видим интересные тренды...',
+    image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&h=400&fit=crop',
+    date: '1 Марта 2024',
+    author: 'Мария Сидорова',
+    category: 'Тренды',
+    slug: 'bar-trends-2024'
+  },
+  {
+    id: 5,
+    title: 'Премиальные спирты и их характеристики',
+    excerpt: 'Подробный обзор лучших премиальных алкогольных напитков',
+    content: 'При выборе ингредиентов для коктейлей качество спиртов играет решающую роль...',
+    image: 'https://images.unsplash.com/photo-1608439773649-abc10fbb03e0?w=600&h=400&fit=crop',
+    date: '25 Февраля 2024',
+    author: 'Сергей Орлов',
+    category: 'Ингредиенты',
+    slug: 'premium-spirits'
+  },
+  {
+    id: 6,
+    title: 'Безалкогольные коктейли для всех случаев',
+    excerpt: 'Вкусные и красивые безалкогольные напитки для вашего события',
+    content: 'Безалкогольные коктейли - отличное решение для событий, где присутствуют люди всех возрастов...',
+    image: 'https://images.unsplash.com/photo-1590080876351-cd381e72e601?w=600&h=400&fit=crop',
+    date: '20 Февраля 2024',
+    author: 'Анна Морозова',
+    category: 'Рецепты',
+    slug: 'non-alcoholic-cocktails'
+  }
+];
+
+const categories = [...new Set(posts.map(p => p.category))];
+---
+
+<Layout title="Блог - Diamond Pro Bar" currentPage="blog">
+  <Hero
+    title="Блог Diamond Pro Bar"
+    subtitle="Статьи и советы о коктейльной культуре"
+    image="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&h=600&fit=crop"
+    cta={false}
+  />
+
+  {/* Main Blog */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
+        {/* Posts */}
+        <div class="lg:col-span-2">
+          <div class="space-y-8">
+            {posts.map((post) => (
+              <article class="bg-dark-card border border-dark-border rounded-lg overflow-hidden hover:border-gold transition-colors group">
+                <div class="relative h-64 sm:h-72 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div class="absolute top-4 sm:top-6 right-4 sm:right-6">
+                    <span class="px-3 py-1 bg-gold text-dark-bg text-xs font-bold rounded-full">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div class="p-6 sm:p-8">
+                  <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                    <span>{post.date}</span>
+                    <span>•</span>
+                    <span>{post.author}</span>
+                  </div>
+
+                  <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-4 group-hover:text-gold transition-colors">
+                    {post.title}
+                  </h2>
+
+                  <p class="text-gray-400 mb-6">{post.excerpt}</p>
+
+                  <a
+                    href={`/blog/${post.slug}/`}
+                    class="inline-block px-6 py-2 border border-gold text-gold font-bold rounded hover:bg-gold/10 transition-colors"
+                  >
+                    Читать больше →
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* Sidebar */}
+        <div>
+          {/* Categories */}
+          <div class="bg-dark-card border border-dark-border rounded-lg p-6 sm:p-8 mb-8">
+            <h3 class="text-xl font-serif font-bold text-white mb-6">Категории</h3>
+            <div class="space-y-2">
+              <a href="/blog/" class="block px-4 py-2 rounded bg-gold text-dark-bg font-bold hover:shadow-lg transition-all">
+                Все статьи
+              </a>
+              {categories.map((cat) => (
+                <a href={`/blog/?category=${cat}`} class="block px-4 py-2 rounded text-gold border border-gold hover:bg-gold/10 transition-colors">
+                  {cat}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Subscribe */}
+          <div class="bg-gradient-gold text-dark-bg rounded-lg p-6 sm:p-8">
+            <h3 class="text-xl font-bold mb-2">Подписывайтесь на новости</h3>
+            <p class="text-sm mb-6 opacity-90">
+              Получайте советы по коктейлям и информацию о новых услугах
+            </p>
+            <form class="space-y-3" id="subscribeForm">
+              <input
+                type="email"
+                placeholder="Ваш email"
+                class="w-full px-4 py-3 rounded bg-dark-bg text-gold placeholder-gray-600 focus:outline-none"
+                required
+              />
+              <button
+                type="submit"
+                class="w-full px-4 py-3 bg-dark-bg text-gold font-bold rounded hover:shadow-lg transition-all"
+              >
+                Подписаться
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Featured */}
+  <section class="py-16 sm:py-24 bg-gradient-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-12 sm:mb-16 text-center">
+        Популярные статьи
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+        {posts.slice(0, 3).map((post) => (
+          <a href={`/blog/${post.slug}/`} class="group">
+            <div class="relative h-48 sm:h-56 rounded-lg overflow-hidden mb-4">
+              <img
+                src={post.image}
+                alt={post.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="text-lg font-serif font-bold text-white group-hover:text-gold transition-colors">
+              {post.title}
+            </h3>
+            <p class="text-gold text-sm mt-2">{post.category}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('subscribeForm');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = (form.querySelector('input[type="email"]') as HTMLInputElement).value;
+    alert(`Спасибо! Мы отправим новости на ${email}`);
+    form.reset();
+  });
+</script>

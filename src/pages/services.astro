@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+  {
+    title: 'Коктейльный бар',
+    description: 'Профессиональный бармен приготовит авторские коктейли',
+    price: 'от 3500₽',
+    minOrder: 'Минимум 5 человек',
+    image: 'https://images.unsplash.com/photo-1608439773649-abc10fbb03e0?w=500&h=500&fit=crop',
+    features: [
+      'Профессиональный бармен',
+      'Авторские коктейли',
+      'Premium алкоголь',
+      'Полная комплектация',
+      'Время работы 4+ часа'
+    ]
+  },
+  {
+    title: 'Кофейня на выезде',
+    description: 'Качественный кофе и эспрессо прямо на вашем событии',
+    price: 'от 2500₽',
+    minOrder: 'Минимум 3 человека',
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&h=500&fit=crop',
+    features: [
+      'Эспрессо-машина',
+      'Качественные зерна',
+      'Подготовленный бариста',
+      'Все напитки включены',
+      'Работает до 6 часов'
+    ]
+  },
+  {
+    title: 'Смузи-бар',
+    description: 'Свежие и полезные напитки из фруктов и ягод',
+    price: 'от 1500₽',
+    minOrder: 'Минимум 2 человека',
+    image: 'https://images.unsplash.com/photo-1590080876351-cd381e72e601?w=500&h=500&fit=crop',
+    features: [
+      'Натуральные ингредиенты',
+      'Диетические опции',
+      'Безлактозные напитки',
+      'Быстрое приготовление',
+      'Вкусные и полезные'
+    ]
+  },
+  {
+    title: 'Premium VIP пакет',
+    description: 'Полный спектр услуг для премиального события',
+    price: 'от 7500₽',
+    minOrder: 'Минимум 10 человек',
+    image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop',
+    features: [
+      'Все напитки включены',
+      '2 профессиональных барменов',
+      'Декор интерьера',
+      'Дополнительное оборудование',
+      'VIP обслуживание'
+    ]
+  },
+  {
+    title: 'Бармен на часы',
+    description: 'Профессиональный бармен для длительных мероприятий',
+    price: '1500₽/час',
+    minOrder: 'Минимум 4 часа',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop',
+    features: [
+      'Опытный специалист',
+      'Авторские рецепты',
+      'Гибкий график',
+      'Работает выходные',
+      'Экономно для больших групп'
+    ]
+  },
+  {
+    title: 'Полный сервис',
+    description: 'Полная организация событий с нашей командой',
+    price: 'По смете',
+    minOrder: 'Индивидуальный расчет',
+    image: 'https://images.unsplash.com/photo-1519671482677-2b2f0ce8e24d?w=500&h=500&fit=crop',
+    features: [
+      'Вся организация на нас',
+      'Доставка оборудования',
+      'Встреча и размещение',
+      'Уборка территории',
+      'Страховка и лицензирование'
+    ]
+  }
+];
+---
+
+<Layout title="Услуги - Diamond Pro Bar" currentPage="services">
+  <Hero
+    title="Наши услуги"
+    subtitle="Полный спектр решений для вашего события"
+    image="https://images.unsplash.com/photo-1519671482677-2b2f0ce8e24d?w=1200&h=600&fit=crop"
+    cta={false}
+  />
+
+  {/* Main Services */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-4 sm:mb-6">
+          Выбирайте пакет под свое мероприятие
+        </h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+          Гибкие условия и индивидуальные предложения для каждого клиента
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Features */}
+  <section class="py-16 sm:py-24 bg-gradient-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-12 sm:mb-16 text-center">
+        Почему выбирают Diamond Pro Bar
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
+        {[
+          {
+            icon: '⭐',
+            title: 'Профессионализм',
+            desc: 'Команда со стажем более 10 лет в индустрии'
+          },
+          {
+            icon: '💎',
+            title: 'Premium качество',
+            desc: 'Только лучшие ингредиенты и оборудование'
+          },
+          {
+            icon: '🎯',
+            title: 'На время',
+            desc: 'Всегда приезжаем вовремя и готовы к работе'
+          },
+          {
+            icon: '💰',
+            title: 'Справедливые цены',
+            desc: 'Прозрачная стоимость без скрытых платежей'
+          },
+          {
+            icon: '🎨',
+            title: 'Индивидуальный подход',
+            desc: 'Адаптируем меню под ваши предпочтения'
+          },
+          {
+            icon: '📞',
+            title: 'Поддержка 24/7',
+            desc: 'Всегда готовы ответить на вопросы'
+          }
+        ].map((feature) => (
+          <div class="text-center">
+            <div class="text-5xl mb-4">{feature.icon}</div>
+            <h3 class="text-xl font-bold text-white mb-2">{feature.title}</h3>
+            <p class="text-gray-400">{feature.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Calculator */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-8 sm:mb-12 text-center">
+        Калькулятор стоимости
+      </h2>
+
+      <div class="bg-dark-card border border-dark-border rounded-lg p-6 sm:p-8 space-y-6">
+        <div>
+          <label class="block text-white font-bold mb-2">Выберите тип бара</label>
+          <select id="serviceType" class="w-full bg-dark-bg border border-dark-border text-white rounded p-3 focus:border-gold focus:outline-none">
+            <option value="cocktail">Коктейльный бар - 3500₽ (5+ человек)</option>
+            <option value="coffee">Кофейня - 2500₽ (3+ человека)</option>
+            <option value="smoothie">Смузи-бар - 1500₽ (2+ человека)</option>
+            <option value="hourly">Бармен по часам - 1500₽/час</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-white font-bold mb-2">Количество гостей</label>
+          <input type="number" id="guestCount" min="1" value="10" class="w-full bg-dark-bg border border-dark-border text-white rounded p-3 focus:border-gold focus:outline-none" />
+        </div>
+
+        <div class="hidden" id="hoursContainer">
+          <label class="block text-white font-bold mb-2">Количество часов</label>
+          <input type="number" id="hours" min="1" value="4" class="w-full bg-dark-bg border border-dark-border text-white rounded p-3 focus:border-gold focus:outline-none" />
+        </div>
+
+        <div class="pt-4 sm:pt-6 border-t border-dark-border">
+          <p class="text-gray-400 mb-4">Примерная стоимость:</p>
+          <div class="text-4xl sm:text-5xl font-serif font-bold text-gold mb-6" id="totalPrice">
+            3500₽
+          </div>
+          <a
+            href="https://wa.me/79588261058?text=Хочу%20узнать%20точную%20стоимость%20услуг"
+            target="_blank"
+            class="block w-full py-4 bg-gradient-gold text-dark-bg font-bold rounded hover:shadow-lg hover:shadow-gold/50 transition-all text-center"
+          >
+            Получить точную смету в WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="py-16 sm:py-24 bg-gradient-gold text-dark-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold mb-4 sm:mb-6">
+        Готовы устроить идеальное событие?
+      </h2>
+      <p class="text-lg mb-8 opacity-90">
+        Свяжитесь с нами и получите персональное предложение
+      </p>
+      <a
+        href="/contact/"
+        class="inline-block px-8 py-4 bg-dark-bg text-gold font-bold rounded hover:shadow-lg transition-all"
+      >
+        Заполнить форму заявки
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const serviceType = document.getElementById('serviceType');
+  const guestCount = document.getElementById('guestCount');
+  const totalPrice = document.getElementById('totalPrice');
+  const hours = document.getElementById('hours');
+  const hoursContainer = document.getElementById('hoursContainer');
+
+  const prices = {
+    cocktail: { base: 3500, minGuests: 5, perPerson: 500 },
+    coffee: { base: 2500, minGuests: 3, perPerson: 400 },
+    smoothie: { base: 1500, minGuests: 2, perPerson: 300 },
+    hourly: { base: 1500, minGuests: 1, perHour: true }
+  };
+
+  function updatePrice() {
+    const type = serviceType.value;
+    const guests = Math.max(parseInt(guestCount.value) || 0, prices[type].minGuests);
+    const price = prices[type];
+
+    let total;
+    if (type === 'hourly') {
+      const hourCount = parseInt(hours.value) || 4;
+      total = price.base * hourCount;
+    } else {
+      total = price.base + (guests - price.minGuests) * price.perPerson;
+    }
+
+    totalPrice.textContent = `${total.toLocaleString('ru-RU')}₽`;
+  }
+
+  serviceType.addEventListener('change', () => {
+    hoursContainer.classList.toggle('hidden', serviceType.value !== 'hourly');
+    updatePrice();
+  });
+
+  guestCount.addEventListener('input', updatePrice);
+  hours.addEventListener('input', updatePrice);
+</script>

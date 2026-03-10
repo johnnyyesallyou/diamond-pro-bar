@@ -1,0 +1,89 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  currentPage?: string;
+}
+
+const { title, description = 'Diamond Pro Bar - Выездной бар в Москве', image = 'https://images.unsplash.com/photo-1537521537707-da8fbf3b3efb?w=1200&h=630&fit=crop', currentPage = 'home' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0A0E27" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={canonicalURL} />
+
+    <!-- Twitter -->
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href="/diamond-pro-bar/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-dark-bg text-white font-sans antialiased">
+    <Header currentPage={currentPage} />
+    <main class="pt-16 sm:pt-20">
+      <slot />
+    </main>
+    <Footer />
+
+    <style is:global>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: #0a0e27;
+      }
+
+      /* Smooth scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #1a1f3a;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #d4af37;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #aa8c2c;
+      }
+    </style>
+  </body>
+</html>

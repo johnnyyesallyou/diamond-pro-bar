@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+
+const cases = [
+  {
+    title: 'Корпоративное мероприятие ITMO',
+    description: 'Коктейльный бар для 150+ гостей на техническом фестивале',
+    image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop',
+    date: 'Март 2024',
+    details: 'Полный сервис: 3 бармена, 20 авторских коктейлей, система охлаждения'
+  },
+  {
+    title: 'Свадьба в ресторане Metropol',
+    description: 'Изысканный коктейльный бар для свадебного приема',
+    image: 'https://images.unsplash.com/photo-1519671482677-2b2f0ce8e24d?w=500&h=500&fit=crop',
+    date: 'Февраль 2024',
+    details: '80 гостей, персональное меню, живое оформление'
+  },
+  {
+    title: 'Презентация бренда LUXE',
+    description: 'Кофейня на выезде для мероприятия премиального бренда',
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&h=500&fit=crop',
+    date: 'Январь 2024',
+    details: 'Эспрессо машина, 2 бариста, фирменное оформление'
+  },
+  {
+    title: 'День рождения Forbes TOP100',
+    description: 'VIP пакет для закрытого мероприятия влиятельных лиц',
+    image: 'https://images.unsplash.com/photo-1608439773649-abc10fbb03e0?w=500&h=500&fit=crop',
+    date: 'Декабрь 2023',
+    details: '120 гостей, 2 полноценных бара, техническая поддержка'
+  },
+  {
+    title: 'Корпоративная вечеринка Sber',
+    description: 'Комбинированный бар - коктейли, кофе и смузи',
+    image: 'https://images.unsplash.com/photo-1590080876351-cd381e72e601?w=500&h=500&fit=crop',
+    date: 'Ноябрь 2023',
+    details: '200+ человек, 4 барменов, 3 разных станции'
+  },
+  {
+    title: 'Съемка ТВ проекта на 1канале',
+    description: 'Кино-индустрийный проект со спецэффектами',
+    image: 'https://images.unsplash.com/photo-1537521537707-da8fbf3b3efb?w=500&h=500&fit=crop',
+    date: 'Октябрь 2023',
+    details: 'Специальное оборудование, креативное оформление бара'
+  }
+];
+---
+
+<Layout title="Кейсы - Diamond Pro Bar" currentPage="cases">
+  <Hero
+    title="Наши кейсы"
+    subtitle="Примеры реализованных проектов и мероприятий"
+    image="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&h=600&fit=crop"
+    cta={false}
+  />
+
+  {/* Cases Grid */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {cases.map((caseItem) => (
+          <div class="group bg-dark-card border border-dark-border rounded-lg overflow-hidden hover:border-gold transition-colors cursor-pointer">
+            <div class="relative h-48 sm:h-56 overflow-hidden">
+              <img
+                src={caseItem.image}
+                alt={caseItem.title}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/95 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+                <p class="text-gold text-sm">{caseItem.details}</p>
+              </div>
+            </div>
+
+            <div class="p-4 sm:p-6">
+              <p class="text-gold text-sm uppercase tracking-widest mb-2">{caseItem.date}</p>
+              <h3 class="text-lg sm:text-xl font-serif font-bold text-white mb-2">{caseItem.title}</h3>
+              <p class="text-gray-400 text-sm">{caseItem.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Stats */}
+  <section class="py-16 sm:py-24 bg-gradient-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
+        {[
+          { num: '500+', label: 'Событий организовано' },
+          { num: '5000+', label: 'Довольных клиентов' },
+          { num: '10+', label: 'Лет опыта' },
+          { num: '99.8%', label: 'Рейтинг довольства' }
+        ].map((stat) => (
+          <div>
+            <div class="text-3xl sm:text-5xl font-serif font-bold text-gold mb-2">{stat.num}</div>
+            <p class="text-gray-400 text-sm">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Testimonials */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-12 sm:mb-16 text-center">
+        Отзывы наших клиентов
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {[
+          {
+            name: 'Мария Козлова',
+            role: 'Event Manager, Forbes',
+            text: 'Профессиональная команда! Все на высшем уровне. Наши гости не могли наговориться о коктейлях.',
+            avatar: '👩‍💼'
+          },
+          {
+            name: 'Иван Петров',
+            role: 'Генеральный директор',
+            text: 'Идеальное решение для корпоратива. Спасибо за отличный сервис и внимание к деталям.',
+            avatar: '👨‍💼'
+          },
+          {
+            name: 'Елена Смирнова',
+            role: 'Невеста',
+            text: 'Наша свадьба была незабываемой благодаря Diamond Pro Bar. Спасибо огромное!',
+            avatar: '👰'
+          },
+          {
+            name: 'Александр Иванов',
+            role: 'CEO, Tech Startup',
+            text: 'Лучший выбор для нашей презентации. Барменты просто волшебники!',
+            avatar: '🧑‍💼'
+          },
+          {
+            name: 'Ольга Вольф',
+            role: 'Продюсер ТВ',
+            text: 'Работать с Diamond Pro Bar - одно удовольствие. Рекомендую всем!',
+            avatar: '👩‍🎬'
+          },
+          {
+            name: 'Дмитрий Петров',
+            role: 'Владелец ресторана',
+            text: 'Постоянно приглашаем их на крупные события. Безупречное качество!',
+            avatar: '👨‍🍳'
+          }
+        ].map((testimonial) => (
+          <div class="bg-dark-card border border-dark-border rounded-lg p-6 sm:p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="text-4xl">{testimonial.avatar}</div>
+              <div>
+                <p class="font-bold text-white">{testimonial.name}</p>
+                <p class="text-gold text-sm">{testimonial.role}</p>
+              </div>
+            </div>
+            <p class="text-gray-300 italic">"{testimonial.text}"</p>
+            <div class="mt-4 flex gap-1">
+              {[...Array(5)].map(() => (
+                <span class="text-gold">★</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="py-16 sm:py-24 bg-gradient-gold text-dark-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold mb-4 sm:mb-6">
+        Вы следующий?
+      </h2>
+      <p class="text-lg mb-8 opacity-90">
+        Давайте сделаем ваше событие незабываемым
+      </p>
+      <a
+        href="https://wa.me/79588261058"
+        target="_blank"
+        class="inline-block px-8 py-4 bg-dark-bg text-gold font-bold rounded hover:shadow-lg transition-all"
+      >
+        Написать в WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

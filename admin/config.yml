@@ -1,0 +1,184 @@
+backend:
+  name: github
+  repo: johnnyyesallyou/diamond-pro-bar
+  branch: main
+  auth_endpoint: api/auth
+  cms_label_prefix: '[CMS]'
+
+media_folder: public/images/uploads
+public_folder: /diamond-pro-bar/images/uploads
+
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+
+i18n:
+  structure: single_file
+  locales: [ru]
+  default_locale: ru
+
+collections:
+  - name: 'global'
+    label: 'Глобальные настройки'
+    files:
+      - name: 'settings'
+        label: 'Основные настройки'
+        file: 'src/data/global.json'
+        format: 'json'
+        fields:
+          - { label: 'Название', name: 'siteName', widget: 'string', default: 'Diamond Pro Bar' }
+          - { label: 'Основной телефон', name: 'phone', widget: 'string' }
+          - { label: 'WhatsApp', name: 'whatsapp', widget: 'string' }
+          - { label: 'Email', name: 'email', widget: 'string' }
+          - { label: 'Логотип', name: 'logo', widget: 'image' }
+          - label: 'Социальные сети'
+            name: 'socials'
+            widget: 'object'
+            fields:
+              - { label: 'Instagram', name: 'instagram', widget: 'string' }
+              - { label: 'VK', name: 'vk', widget: 'string' }
+              - { label: 'Telegram', name: 'telegram', widget: 'string' }
+              - { label: 'TikTok', name: 'tiktok', widget: 'string' }
+
+  - name: 'services'
+    label: 'Услуги / Пакеты'
+    folder: 'src/content/services'
+    create: true
+    slug: '{{slug}}'
+    format: 'yml'
+    fields:
+      - { label: 'Название', name: 'title', widget: 'string' }
+      - { label: 'Описание', name: 'description', widget: 'string' }
+      - { label: 'Цена', name: 'price', widget: 'string', hint: 'например: от 3500₽' }
+      - { label: 'Минимальный заказ', name: 'minOrder', widget: 'string' }
+      - { label: 'Изображение', name: 'image', widget: 'image' }
+      - label: 'Особенности'
+        name: 'features'
+        widget: 'list'
+        fields:
+          - { label: 'Особенность', name: 'feature', widget: 'string' }
+      - { label: 'Сортировка', name: 'order', widget: 'number', default: 1 }
+
+  - name: 'menu'
+    label: 'Меню'
+    folder: 'src/content/menu'
+    create: true
+    slug: '{{slug}}'
+    format: 'yml'
+    fields:
+      - { label: 'Название напитка', name: 'name', widget: 'string' }
+      - { label: 'Ингредиенты', name: 'ingredients', widget: 'string' }
+      - { label: 'Описание', name: 'description', widget: 'string' }
+      - { label: 'Цена', name: 'price', widget: 'string' }
+      - { label: 'Категория', name: 'category', widget: 'select', options: ['Коктейли', 'Безалкогольные', 'Кофе', 'Смузи'] }
+      - { label: 'Изображение', name: 'image', widget: 'image' }
+      - { label: 'Доступность', name: 'available', widget: 'boolean', default: true }
+
+  - name: 'cases'
+    label: 'Кейсы / Портфолио'
+    folder: 'src/content/cases'
+    create: true
+    slug: '{{slug}}'
+    format: 'yml'
+    fields:
+      - { label: 'Название проекта', name: 'title', widget: 'string' }
+      - { label: 'Описание', name: 'description', widget: 'string' }
+      - { label: 'Полное описание', name: 'details', widget: 'text' }
+      - { label: 'Дата', name: 'date', widget: 'string' }
+      - { label: 'Изображение', name: 'image', widget: 'image' }
+      - { label: 'Категория', name: 'category', widget: 'select', options: ['Свадьба', 'Корпоратив', 'День рождения', 'Конференция', 'Другое'] }
+
+  - name: 'blog'
+    label: 'Блог / Статьи'
+    folder: 'src/content/blog'
+    create: true
+    slug: '{{slug}}'
+    format: 'yml'
+    fields:
+      - { label: 'Название', name: 'title', widget: 'string' }
+      - { label: 'Краткое описание', name: 'excerpt', widget: 'string' }
+      - { label: 'Содержание', name: 'content', widget: 'markdown' }
+      - { label: 'Изображение', name: 'image', widget: 'image' }
+      - { label: 'Автор', name: 'author', widget: 'string' }
+      - { label: 'Категория', name: 'category', widget: 'select', options: ['Коктейли', 'Советы', 'История', 'Тренды', 'Ингредиенты', 'Рецепты'] }
+      - { label: 'Дата публикации', name: 'date', widget: 'datetime' }
+      - { label: 'Опубликовано', name: 'published', widget: 'boolean', default: true }
+
+  - name: 'hero'
+    label: 'Главный слайдер (Hero)'
+    folder: 'src/content/hero'
+    create: true
+    slug: '{{slug}}'
+    format: 'yml'
+    fields:
+      - { label: 'Основной заголовок', name: 'title', widget: 'string' }
+      - { label: 'Подзаголовок', name: 'subtitle', widget: 'string' }
+      - { label: 'Основное изображение', name: 'image', widget: 'image' }
+      - { label: 'Показывать CTA кнопки', name: 'showCTA', widget: 'boolean', default: true }
+
+  - name: 'howItWorks'
+    label: 'Как это работает'
+    folder: 'src/content/how-it-works'
+    create: true
+    slug: '{{slug}}'
+    format: 'yml'
+    fields:
+      - { label: 'Номер шага', name: 'step', widget: 'number', default: 1 }
+      - { label: 'Название', name: 'title', widget: 'string' }
+      - { label: 'Описание', name: 'description', widget: 'string' }
+      - { label: 'Икон (эмодзи)', name: 'icon', widget: 'string', hint: '👍' }
+
+  - name: 'testimonials'
+    label: 'Отзывы'
+    folder: 'src/content/testimonials'
+    create: true
+    slug: '{{slug}}'
+    format: 'yml'
+    fields:
+      - { label: 'Имя', name: 'name', widget: 'string' }
+      - { label: 'Должность', name: 'role', widget: 'string' }
+      - { label: 'Текст отзыва', name: 'text', widget: 'text' }
+      - { label: 'Рейтинг (1-5)', name: 'rating', widget: 'number', min: 1, max: 5, default: 5 }
+      - { label: 'Фото аватара (URL)', name: 'avatar', widget: 'string' }
+
+  - name: 'faq'
+    label: 'FAQ - Вопросы и ответы'
+    folder: 'src/content/faq'
+    create: true
+    slug: '{{slug}}'
+    format: 'yml'
+    fields:
+      - { label: 'Вопрос', name: 'question', widget: 'string' }
+      - { label: 'Ответ', name: 'answer', widget: 'text' }
+      - { label: 'Сортировка', name: 'order', widget: 'number', default: 1 }
+
+  - name: 'clients'
+    label: 'Логотипы клиентов'
+    folder: 'src/content/clients'
+    create: true
+    slug: '{{slug}}'
+    format: 'yml'
+    fields:
+      - { label: 'Название компании', name: 'name', widget: 'string' }
+      - { label: 'Логотип (URL)', name: 'logo', widget: 'image' }
+      - { label: 'Сссылка', name: 'url', widget: 'string' }
+
+  - name: 'contacts'
+    label: 'Контактная информация'
+    files:
+      - name: 'main'
+        label: 'Основные контакты'
+        file: 'src/data/contacts.json'
+        format: 'json'
+        fields:
+          - { label: 'Телефон', name: 'phone', widget: 'string' }
+          - { label: 'WhatsApp', name: 'whatsapp', widget: 'string' }
+          - { label: 'Email', name: 'email', widget: 'string' }
+          - { label: 'Адрес', name: 'address', widget: 'string' }
+          - label: 'Часы работы'
+            name: 'hours'
+            widget: 'object'
+            fields:
+              - { label: 'Понедельник-пятница', name: 'weekdays', widget: 'string', default: '12:00 - 23:00' }
+              - { label: 'Суббота', name: 'saturday', widget: 'string', default: '10:00 - 00:00' }
+              - { label: 'Воскресенье', name: 'sunday', widget: 'string', default: '10:00 - 23:00' }

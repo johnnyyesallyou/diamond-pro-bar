@@ -1,0 +1,308 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+
+---
+
+<Layout title="Контакты - Diamond Pro Bar" currentPage="contact">
+  <Hero
+    title="Свяжитесь с нами"
+    subtitle="Мы будем рады помочь вам с планированием вашего события"
+    image="https://images.unsplash.com/photo-1516534775068-bb57100d4f10?w=1200&h=600&fit=crop"
+    cta={false}
+  />
+
+  {/* Contact Info + Form */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16">
+        {/* Contact Details */}
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-8 sm:mb-12">
+            Контактная информация
+          </h2>
+
+          <div class="space-y-6 sm:space-y-8">
+            {/* Phone */}
+            <div>
+              <h3 class="text-lg font-bold text-gold mb-2">Телефон</h3>
+              <a href="tel:+79588261058" class="text-xl sm:text-2xl font-serif text-white hover:text-gold transition-colors">
+                +7 (958) 826-10-58
+              </a>
+              <p class="text-gray-400 text-sm mt-2">Доступны с 10:00 до 23:00, пн-пт</p>
+            </div>
+
+            {/* WhatsApp */}
+            <div>
+              <h3 class="text-lg font-bold text-gold mb-2">WhatsApp & Telegram</h3>
+              <a href="https://wa.me/79588261058" target="_blank" class="text-xl sm:text-2xl font-serif text-white hover:text-gold transition-colors inline-block">
+                +7 (958) 826-10-58
+              </a>
+              <p class="text-gray-400 text-sm mt-2">Быстрый ответ 24/7</p>
+            </div>
+
+            {/* Email */}
+            <div>
+              <h3 class="text-lg font-bold text-gold mb-2">Email</h3>
+              <a href="mailto:Dutov.yes@yandex.ru" class="text-xl sm:text-2xl font-serif text-white hover:text-gold transition-colors">
+                Dutov.yes@yandex.ru
+              </a>
+              <p class="text-gray-400 text-sm mt-2">Ответим в течение 2 часов</p>
+            </div>
+
+            {/* Address */}
+            <div>
+              <h3 class="text-lg font-bold text-gold mb-2">Адрес</h3>
+              <p class="text-xl sm:text-2xl font-serif text-white">
+                Москва и Московская область
+              </p>
+              <p class="text-gray-400 text-sm mt-2">Выезжаем на все события</p>
+            </div>
+
+            {/* Hours */}
+            <div class="bg-dark-card border border-dark-border rounded-lg p-6 sm:p-8 mt-8">
+              <h3 class="text-lg font-bold text-gold mb-4">Часы работы</h3>
+              <div class="space-y-2 text-white">
+                <div class="flex justify-between">
+                  <span>Понедельник - Пятница:</span>
+                  <span class="text-gold">12:00 - 23:00</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Суббота:</span>
+                  <span class="text-gold">10:00 - 00:00</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Воскресенье:</span>
+                  <span class="text-gold">10:00 - 23:00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <div>
+          <div class="bg-dark-card border border-dark-border rounded-lg p-6 sm:p-8">
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-6 sm:mb-8">
+              Форма заявки
+            </h2>
+
+            <form id="contactForm" class="space-y-4 sm:space-y-6">
+              <div>
+                <label class="block text-white font-bold mb-2">Ваше имя *</label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Иван Петров"
+                  class="w-full px-4 py-3 bg-dark-bg border border-dark-border text-white rounded focus:border-gold focus:outline-none placeholder-gray-600"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-white font-bold mb-2">Телефон *</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    placeholder="+7 (999) 999-99-99"
+                    class="w-full px-4 py-3 bg-dark-bg border border-dark-border text-white rounded focus:border-gold focus:outline-none placeholder-gray-600"
+                  />
+                </div>
+                <div>
+                  <label class="block text-white font-bold mb-2">Email *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="your@email.com"
+                    class="w-full px-4 py-3 bg-dark-bg border border-dark-border text-white rounded focus:border-gold focus:outline-none placeholder-gray-600"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-white font-bold mb-2">Дата события *</label>
+                <input
+                  type="date"
+                  name="date"
+                  required
+                  class="w-full px-4 py-3 bg-dark-bg border border-dark-border text-white rounded focus:border-gold focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label class="block text-white font-bold mb-2">Тип события *</label>
+                <select name="eventType" required class="w-full px-4 py-3 bg-dark-bg border border-dark-border text-white rounded focus:border-gold focus:outline-none">
+                  <option value="">-- Выберите тип события --</option>
+                  <option value="wedding">Свадьба</option>
+                  <option value="corporate">Корпоратив</option>
+                  <option value="birthday">День рождения</option>
+                  <option value="conference">Конференция</option>
+                  <option value="other">Другое</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-white font-bold mb-2">Количество гостей *</label>
+                <input
+                  type="number"
+                  name="guests"
+                  required
+                  min="1"
+                  placeholder="100"
+                  class="w-full px-4 py-3 bg-dark-bg border border-dark-border text-white rounded focus:border-gold focus:outline-none placeholder-gray-600"
+                />
+              </div>
+
+              <div>
+                <label class="block text-white font-bold mb-2">Ваш вопрос</label>
+                <textarea
+                  name="message"
+                  rows={5}
+                  placeholder="Расскажите подробнее о вашем мероприятии..."
+                  class="w-full px-4 py-3 bg-dark-bg border border-dark-border text-white rounded focus:border-gold focus:outline-none placeholder-gray-600 resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full py-4 bg-gradient-gold text-dark-bg font-bold rounded hover:shadow-lg hover:shadow-gold/50 transition-all transform hover:scale-105"
+              >
+                Отправить заявку
+              </button>
+
+              <p class="text-gray-500 text-xs text-center">
+                Нажимая кнопку, вы согласны с обработкой персональных данных
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Social */}
+      <div class="border-t border-dark-border pt-12 sm:pt-16">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-8 text-center">
+          Следите за нами в соцсетях
+        </h2>
+
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-8">
+          {[
+            { name: 'Instagram', icon: '📷', link: '#' },
+            { name: 'VK', icon: '🔵', link: '#' },
+            { name: 'Telegram', icon: '✈️', link: '#' },
+            { name: 'TikTok', icon: '🎵', link: '#' }
+          ].map((social) => (
+            <a
+              href={social.link}
+              target="_blank"
+              class="inline-flex items-center gap-2 px-6 py-3 border border-dark-border rounded hover:border-gold hover:bg-gold/10 transition-all group"
+            >
+              <span class="text-2xl">{social.icon}</span>
+              <span class="text-gold group-hover:text-gold transition-colors">{social.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Map */}
+  <section class="py-16 sm:py-24 bg-gradient-dark h-96">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.8880447784437!2d37.62!3d55.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5f5c5c5c5d%3A0x5c5c5c5c5c5c5c5c!2sMoscow!5e0!3m2!1sen!2sru!4v1234567890"
+      width="100%"
+      height="100%"
+      style="border:0;"
+      allowFullScreen=""
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      class="w-full h-full"
+    ></iframe>
+  </section>
+
+  {/* FAQ */}
+  <section class="py-16 sm:py-24 bg-dark-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-12 sm:mb-16 text-center">
+        Часто задаваемые вопросы
+      </h2>
+
+      <div class="space-y-4 sm:space-y-6">
+        {[
+          {
+            q: 'Как быстро вы можете приехать на мероприятие?',
+            a: 'Обычно мы можем организоваться в течение 48 часов. Для срочных заказов свяжитесь с нами по телефону.'
+          },
+          {
+            q: 'Какова минимальная стоимость заказа?',
+            a: 'Минимальная стоимость зависит от типа услуги. Коктейльный бар - от 3500₽, кофейня - от 2500₽, смузи-бар - от 1500₽.'
+          },
+          {
+            q: 'Можно ли заказать определенные напитки?',
+            a: 'Конечно! Мы можем адаптировать меню под ваши предпочтения. Расскажите нам о них, и мы все подготовим.'
+          },
+          {
+            q: 'Нужно ли предоставлять электричество и воду?',
+            a: 'Зависит от пакета. Для полного спектра услуг нужны электричество (220V) и горячая вода. Обсудим детали при заказе.'
+          },
+          {
+            q: 'Есть ли страховка?',
+            a: 'Да, у нас есть полная страховка всех видов ответственности. Вы защищены во время мероприятия.'
+          },
+          {
+            q: 'Можно ли отменить заказ?',
+            a: 'Отмену можно сделать за 7 дней без штрафов. При отмене позже - 50% стоимости заказа.'
+          }
+        ].map((faq) => (
+          <details class="group bg-dark-card border border-dark-border rounded-lg cursor-pointer">
+            <summary class="px-6 py-4 sm:px-8 sm:py-6 flex items-center justify-between font-bold text-white hover:text-gold transition-colors">
+              <span>{faq.q}</span>
+              <span class="text-gold text-xl group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <div class="px-6 py-4 sm:px-8 sm:py-6 border-t border-dark-border text-gray-400">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('contactForm');
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      date: formData.get('date'),
+      eventType: formData.get('eventType'),
+      guests: formData.get('guests'),
+      message: formData.get('message'),
+    };
+
+    // Отправляем в WhatsApp
+    const message = `Новая заявка на мероприятие:
+Имя: ${data.name}
+Телефон: ${data.phone}
+Email: ${data.email}
+Дата: ${data.date}
+Тип события: ${data.eventType}
+Гостей: ${data.guests}
+Сообщение: ${data.message}`;
+
+    window.open(
+      `https://wa.me/79588261058?text=${encodeURIComponent(message)}`,
+      '_blank'
+    );
+
+    form.reset();
+    alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
+  });
+</script>
